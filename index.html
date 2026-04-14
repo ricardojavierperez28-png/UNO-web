@@ -873,7 +873,7 @@ function scrollToPreinscripcion() {
 // ════════════════════════════════════════
 emailjs.init({ publicKey:'6YzY3GTPfZvpi_tKt' });
 const EJS_SVC = 'service_mdvroun';
-const EJS_TPL = 'template_nfqnbst';
+const EJS_TPL = 'template_2gcqkd9';
 
 // ════════════════════════════════════════
 // CUIT FORMATTER — mantiene XX-XXXXXXXX-X
@@ -951,8 +951,8 @@ async function enviar(data, btn, form, suc) {
   regs.push(data); localStorage.setItem('uno_registros',JSON.stringify(regs));
   try {
     await emailjs.send(EJS_SVC, EJS_TPL, {
-      from_name:data.nombre, from_email:data.email, telefono:data.telefono,
-      empresa:data.empresa, cuit:data.cuit, tipo_usuario:data.tipoUsuario,
+      nombre:data.nombre, email:data.email, telefono:data.telefono,
+      empresa:data.empresa, cuit:data.cuit, tipoUsuario:data.tipoUsuario,
       timestamp:data.timestamp, fuente:data.fuente, reply_to:data.email
     });
     console.log('✓ EmailJS OK');
