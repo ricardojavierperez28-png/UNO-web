@@ -445,19 +445,22 @@ footer{
   .nav-cta .nbtn-ghost{display:none;}
   .hero{grid-template-columns:1fr;}
   .hero-left{padding:72px 18px 32px;border-right:none;border-bottom:1px solid var(--border);}
-  .hero-right{position:relative;top:0;height:auto;max-height:none;}
-  .form-panel{padding:20px 16px 28px;}
+  .hero-right{position:relative;top:0;height:auto;max-height:none;overflow:visible;}
+  .form-panel{padding:20px 16px 28px;overflow:visible;}
   .launch-badge{padding:6px 14px;margin-bottom:24px;}
   .launch-text{font-size:11px;letter-spacing:.08em;}
   h1{font-size:clamp(28px,8vw,38px);}
   .hero-tagline{font-size:14px;margin-bottom:28px;max-width:100%;}
   .chips{margin-bottom:28px;}
-  .stats-row{gap:0;padding-top:20px;}
-  .stat-val{font-size:28px;}
-  .stat-item{padding-right:16px;margin-right:16px;}
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding-top:20px;}
+  .stat-item{padding-right:8px;margin-right:0;border-right:1px solid var(--border);}
+  .stat-val{font-size:24px;}
+  .fg input,.fg select{width:100%;box-sizing:border-box;}
   .carousel-wrap{margin:0 0 20px;}
-  .cd-num{font-size:24px;}
-  .cd-box{padding:10px 2px;}
+  .cd-grid{grid-template-columns:repeat(4,1fr);gap:4px;}
+  .cd-num{font-size:22px;}
+  .cd-box{padding:10px 2px;border-radius:8px;}
+  .cd-lbl{font-size:8px;letter-spacing:.05em;}
   .bento{grid-template-columns:1fr;}
   .metrics{grid-template-columns:1fr;}
   .steps-grid{grid-template-columns:1fr;}
@@ -1048,9 +1051,4 @@ window.exportarRegistrosCSV=()=>{
 };
 window.borrarRegistros=()=>{if(confirm('Borrar TODO?'))localStorage.removeItem('uno_registros');};
 window.modificarContadores=(prov,aseg)=>{
-  if(typeof prov==='number') CFG.base_proveedores=prov;
-  if(typeof aseg==='number') CFG.base_aseguradoras=aseg;
-  localStorage.setItem('uno_contadores_config',JSON.stringify({base_proveedores:CFG.base_proveedores,base_aseguradoras:CFG.base_aseguradoras}));
-  updateCounters();
-};
-</script></body></html>
+  if(typ
