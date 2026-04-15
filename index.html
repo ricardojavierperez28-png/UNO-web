@@ -486,6 +486,197 @@ footer{
   .stat-val{font-size:24px;}
   nav{padding:0 12px;}
 }
+
+/* ── MOBILE FIXES ADICIONALES ── */
+.hero-tagline br{display:inline;}
+.stat-item{min-width:0;}
+.stat-lbl{word-break:break-word;}
+.fg{min-width:0;}
+.fg input,.fg select,.btn-submit{max-width:100%;}
+@media(max-width:680px){
+  .hero-tagline br{display:none;}
+  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .stat-item{padding:0 6px;margin:0;border-right:1px solid var(--border);}
+  .stat-item:last-child{border-right:none;}
+  .stat-val{font-size:22px;line-height:1.05;}
+  .stat-lbl{font-size:9px;line-height:1.25;letter-spacing:.06em;}
+  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .cd-box{padding:12px 6px;}
+  .cd-num{font-size:24px;}
+  .cd-lbl{font-size:10px;letter-spacing:.04em;}
+  .fg input,.fg select{padding:11px 12px;font-size:16px;min-height:44px;}
+  .btn-submit{padding:14px 16px;font-size:14px;white-space:normal;}
+}
+@media(max-width:420px){
+  .hero-left{padding:68px 14px 28px;}
+  .form-panel{padding:18px 14px 24px;}
+  .stats-row{gap:6px;border-top:none;padding-top:8px;}
+  .stat-item{border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center;background:rgba(255,255,255,.03);}
+  .stat-item:last-child{border-right:1px solid var(--border);}
+  .stat-val{font-size:21px;}
+  .stat-lbl{font-size:8px;}
+}
+
+
+/* --- Ajustes robustos tablet/mobile --- */
+@media (max-width: 1200px){
+  .hero{grid-template-columns:1fr;}
+  .hero-left{border-right:none;border-bottom:1px solid var(--border);padding:72px 24px 28px;}
+  .hero-right{position:relative;top:0;height:auto;max-height:none;overflow:visible;}
+  .form-panel{overflow:visible;padding:22px 20px 28px;}
+  .stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-top:none;padding-top:12px;}
+  .stat-item{border:none;margin:0;padding:14px 10px;border-radius:14px;background:rgba(255,255,255,.03);text-align:center;min-width:0;}
+  .stat-item:last-child{border-right:none;}
+  .stat-val{font-size:28px;line-height:1;}
+  .stat-lbl{font-size:10px;line-height:1.25;letter-spacing:.06em;word-break:break-word;}
+  .cd-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
+  .cd-box{padding:12px 6px;min-width:0;overflow:hidden;}
+  .cd-num{font-size:24px;}
+  .cd-lbl{font-size:9px;line-height:1.2;white-space:normal;}
+}
+@media (max-width: 760px){
+  .hero-left{padding:70px 16px 24px;}
+  .form-panel{padding:18px 14px 24px;}
+  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .stat-item{padding:12px 8px;}
+  .stat-val{font-size:24px;}
+  .stat-lbl{font-size:9px;}
+  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .cd-box{padding:12px 6px;}
+  .cd-num{font-size:22px;}
+  .cd-lbl{font-size:9px;}
+  .fg{margin-bottom:8px;}
+  .fg label{font-size:9px;}
+  .fg input,.fg select{font-size:16px;padding:11px 12px;min-height:44px;}
+  .form-head{font-size:14px;}
+  .form-sub{font-size:10px;line-height:1.4;}
+  .btn-submit{padding:12px;font-size:13px;}
+}
+@media (max-width: 420px){
+  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .stat-val{font-size:22px;}
+  .stat-lbl{font-size:8px;}
+}
+
+
+
+/* ===== HOTFIX VISIBILIDAD / TABLET / CELULAR ===== */
+html,body{max-width:100%;overflow-x:hidden;}
+.hero,.hero-left,.hero-right,.form-panel,.stats-row,.cd-grid,form{min-width:0;}
+.hero-left > *, .hero-right > *{max-width:100%;}
+.hero-left{justify-content:flex-start;}
+.stats-row{align-items:stretch;}
+.stat-item,.cd-box{min-width:0;}
+.stat-lbl,.cd-lbl{word-break:break-word;}
+.fg input,.fg select{min-width:0;max-width:100%;}
+
+@media (max-width: 1100px){
+  nav{padding:0 16px;height:56px;}
+  .nav-links{display:none;}
+  .nav-cta{gap:8px;}
+  .hero{padding-top:56px;}
+  .hero-left{
+    justify-content:flex-start;
+    padding:88px 22px 30px;
+    overflow-x:hidden;
+  }
+  .hero-right{
+    position:relative;
+    top:0;
+    height:auto;
+    overflow:visible;
+  }
+  .form-panel{padding:22px 22px 28px;overflow:visible;}
+  .carousel-wrap{margin:0 0 18px;}
+  .carousel-item{padding:0 18px;font-size:12px;}
+
+  .stats-row{
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    padding-top:18px;
+    border-top:1px solid var(--border);
+  }
+  .stat-item{
+    margin:0 !important;
+    padding:16px 10px !important;
+    border-right:none !important;
+    border:1px solid var(--border2);
+    border-radius:14px;
+    background:rgba(255,255,255,.03);
+    text-align:center;
+  }
+  .stat-val{font-size:32px;}
+  .stat-lbl{font-size:11px;letter-spacing:.08em;}
+
+  .cd-grid{
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:8px;
+    width:100%;
+  }
+  .cd-box{
+    padding:14px 6px;
+    border-radius:12px;
+    background:rgba(255,255,255,.06);
+  }
+  .cd-num{font-size:28px;}
+  .cd-lbl{font-size:10px;}
+
+  .form-head{font-size:18px;}
+  .form-sub{font-size:13px;line-height:1.5;}
+  .fg{margin-bottom:8px;}
+  .fg label{font-size:10px;}
+  .fg input,.fg select{
+    padding:12px 12px;
+    font-size:14px;
+    border-radius:10px;
+  }
+}
+
+@media (max-width: 820px){
+  .hero-left{padding:82px 18px 26px;}
+  .carousel-item{padding:0 14px;font-size:11px;}
+  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .stat-item{padding:14px 8px !important;}
+  .stat-val{font-size:26px;}
+  .stat-lbl{font-size:9px;letter-spacing:.06em;}
+  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .cd-box{padding:14px 6px;}
+  .cd-num{font-size:24px;}
+  .cd-lbl{font-size:10px;}
+}
+
+@media (max-width: 680px){
+  nav{padding:0 12px;height:56px;}
+  .nav-brand-name{font-size:13px;}
+  .nbtn{padding:7px 12px;font-size:12px;}
+  .hero{padding-top:56px;}
+  .hero-left{padding:78px 16px 24px;}
+  h1{font-size:clamp(27px,8vw,36px);line-height:1.08;}
+  .hero-tagline{font-size:15px;line-height:1.6;}
+  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+  .stat-item{padding:12px 6px !important;border-radius:12px;}
+  .stat-val{font-size:24px;}
+  .stat-lbl{font-size:8px;letter-spacing:.04em;}
+  .form-panel{padding:18px 14px 24px;}
+  .launch-tag{font-size:10px;line-height:1.4;margin-bottom:10px;}
+  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:14px;}
+  .cd-box{padding:12px 4px;}
+  .cd-num{font-size:24px;}
+  .cd-lbl{font-size:9px;}
+  .form-head{font-size:16px;}
+  .form-sub{font-size:12px;margin-bottom:12px;}
+  .fg input,.fg select{padding:11px 10px;font-size:14px;}
+  .btn-submit{padding:12px;font-size:14px;}
+}
+
+@media (max-width: 420px){
+  .stats-row{grid-template-columns:1fr;}
+  .stat-item{padding:12px 10px !important;}
+  .stat-lbl{font-size:10px;}
+}
+
 </style>
 </head>
 <body>
@@ -547,15 +738,15 @@ footer{
     </div>
     <div class="stats-row">
       <div class="stat-item">
-        <div class="stat-val" id="contador-preregistros">0</div>
+        <div class="stat-val" id="contador-preregistros">21</div>
         <div class="stat-lbl">Pre-inscriptos</div>
       </div>
       <div class="stat-item">
-        <div class="stat-val" id="contador-proveedores">0</div>
+        <div class="stat-val" id="contador-proveedores">18</div>
         <div class="stat-lbl">Proveedores</div>
       </div>
       <div class="stat-item">
-        <div class="stat-val" id="contador-aseguradoras">0</div>
+        <div class="stat-val" id="contador-aseguradoras">2</div>
         <div class="stat-lbl">Aseguradoras</div>
       </div>
     </div>
@@ -573,8 +764,8 @@ footer{
       <div class="cd-grid">
         <div class="cd-box"><div class="cd-num" id="days">00</div><div class="cd-lbl">Días</div></div>
         <div class="cd-box"><div class="cd-num" id="hours">00</div><div class="cd-lbl">Horas</div></div>
-        <div class="cd-box"><div class="cd-num" id="minutes">00</div><div class="cd-lbl">Min</div></div>
-        <div class="cd-box"><div class="cd-num" id="seconds">00</div><div class="cd-lbl">Seg</div></div>
+        <div class="cd-box"><div class="cd-num" id="minutes">00</div><div class="cd-lbl">Minutos</div></div>
+        <div class="cd-box"><div class="cd-num" id="seconds">00</div><div class="cd-lbl">Segundos</div></div>
       </div>
 
       <!-- Form -->
@@ -892,163 +1083,249 @@ footer{
 </a>
 
 <script>
-// ════════════════════════════════════════
-// SCROLL TO PREINSCRIPCION
-// ════════════════════════════════════════
 function scrollToPreinscripcion() {
   const panel = document.getElementById('preinscripcion-panel');
-  if (panel) {
-    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ════════════════════════════════════════
-// EMAILJS
-// ════════════════════════════════════════
-emailjs.init({ publicKey:'6YzY3GTPfZvpi_tKt' });
+if (window.emailjs) {
+  emailjs.init({ publicKey: '6YzY3GTPfZvpi_tKt' });
+}
 const EJS_SVC = 'service_mdvroun';
 const EJS_TPL = 'template_2gcqkd9';
 
-// ════════════════════════════════════════
-// CUIT FORMATTER — mantiene XX-XXXXXXXX-X
-// ════════════════════════════════════════
 function bindCuit(inp) {
-  inp.addEventListener('keydown', function(e) {
-    const isNav = ['Backspace','Delete','ArrowLeft','ArrowRight','Tab'].includes(e.key);
-    const isNum = /^[0-9]$/.test(e.key);
-    if (!isNav && !isNum && !(e.ctrlKey || e.metaKey)) e.preventDefault();
+  if (!inp) return;
+  inp.addEventListener('keydown', function (e) {
+    const allowed = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Home', 'End'];
+    const isNumber = /^[0-9]$/.test(e.key);
+    if (!allowed.includes(e.key) && !isNumber && !(e.ctrlKey || e.metaKey)) e.preventDefault();
   });
-  inp.addEventListener('input', function() {
-    const digits = this.value.replace(/\D/g,'').slice(0,11);
+  inp.addEventListener('input', function () {
+    const digits = this.value.replace(/\D/g, '').slice(0, 11);
     let out = '';
-    for (let i=0;i<digits.length;i++) {
-      if (i===2 || i===10) out += '-';
+    for (let i = 0; i < digits.length; i += 1) {
+      if (i === 2 || i === 10) out += '-';
       out += digits[i];
     }
     this.value = out;
   });
 }
-document.querySelectorAll('input[name="cuit"]').forEach(bindCuit);
 
-// ════════════════════════════════════════
-// COUNTDOWN — 23/04/2026 13:00 BsAs = UTC 16:00
-// ════════════════════════════════════════
-function tick() {
-  const launch = new Date('2026-04-23T16:00:00Z');
-  const diff   = Math.max(0, launch.getTime() - Date.now());
-  const secs   = Math.floor(diff / 1000);
-  const d = Math.floor(secs / 86400);
-  const h = Math.floor((secs % 86400) / 3600);
-  const m = Math.floor((secs % 3600) / 60);
-  const s = secs % 60;
-  ['days','hours','minutes','seconds'].forEach(function(id,i){
-    var el = document.getElementById(id);
-    if(el) el.textContent = String([d,h,m,s][i]).padStart(2,'0');
+function safeGetRegistros() {
+  return [];
+}
+
+function safeSetRegistros(registros) {
+  return registros;
+}
+
+const CFG = {
+  base_preregistros: 21,
+  base_proveedores: 18,
+  base_aseguradoras: 2
+};
+
+function setCounterValue(id, value) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const nextValue = Math.max(0, Number(value) || 0);
+  const currentValue = Number(el.textContent.replace(/\D/g, '')) || 0;
+  if (currentValue === nextValue) return;
+
+  const distance = nextValue - currentValue;
+  const steps = Math.min(18, Math.max(1, Math.abs(distance)));
+  let step = 0;
+  const timer = window.setInterval(() => {
+    step += 1;
+    const progress = step / steps;
+    el.textContent = String(Math.round(currentValue + distance * progress));
+    if (step >= steps) {
+      window.clearInterval(timer);
+      el.textContent = String(nextValue);
+      el.classList.add('actualizado');
+      window.setTimeout(() => el.classList.remove('actualizado'), 500);
+    }
+  }, 22);
+}
+
+function updateCounters() {
+  setCounterValue('contador-preregistros', CFG.base_preregistros);
+  setCounterValue('contador-proveedores', CFG.base_proveedores);
+  setCounterValue('contador-aseguradoras', CFG.base_aseguradoras);
+}
+
+function tickCountdown() {
+  const launch = new Date('2026-04-23T16:00:00Z').getTime();
+  const diff = Math.max(0, launch - Date.now());
+  const totalSeconds = Math.floor(diff / 1000);
+  const days = Math.floor(totalSeconds / 86400);
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  const parts = { days, hours, minutes, seconds };
+  Object.entries(parts).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = String(value).padStart(2, '0');
   });
 }
-document.addEventListener('DOMContentLoaded', function(){ tick(); setInterval(tick, 1000); });
 
-// ════════════════════════════════════════
-// CONTADORES
-// ════════════════════════════════════════
-const CFG = {
-  base_preregistros:21, base_proveedores:12, base_aseguradoras:2,
-  inc_prov:.5, inc_aseg:.1
-};
-function animC(el, to) {
-  const from=parseInt(el.textContent)||0, steps=20, inc=(to-from)/steps;
-  let i=0;
-  const t=setInterval(()=>{
-    i++; el.textContent=Math.round(from+inc*i);
-    if(i>=steps){clearInterval(t);el.textContent=to;el.classList.add('actualizado');setTimeout(()=>el.classList.remove('actualizado'),600);}
-  },30);
-}
-function updateCounters() {
-  const regs=JSON.parse(localStorage.getItem('uno_registros')||'[]');
-  const days=Math.floor((Date.now()-new Date('2026-02-01').getTime())/86400000);
-  const ep=document.getElementById('contador-preregistros');
-  const ev=document.getElementById('contador-proveedores');
-  const ea=document.getElementById('contador-aseguradoras');
-  if(ep) animC(ep, CFG.base_preregistros+regs.length);
-  if(ev) animC(ev, Math.floor(CFG.base_proveedores+days*CFG.inc_prov));
-  if(ea) animC(ea, Math.floor(CFG.base_aseguradoras+days*CFG.inc_aseg));
-}
-window.addEventListener('DOMContentLoaded', updateCounters);
-setInterval(updateCounters, 30000);
+async function enviar(data, btn, form, successNode) {
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
 
-// ════════════════════════════════════════
-// FORM SUBMIT + EMAILJS
-// ════════════════════════════════════════
-async function enviar(data, btn, form, suc) {
-  btn.disabled=true; btn.textContent='Enviando...';
-  let regs=JSON.parse(localStorage.getItem('uno_registros')||'[]');
-  regs.push(data); localStorage.setItem('uno_registros',JSON.stringify(regs));
+
   try {
-    await emailjs.send(EJS_SVC, EJS_TPL, {
-      nombre:data.nombre, email:data.email, telefono:data.telefono,
-      empresa:data.empresa, cuit:data.cuit, tipoUsuario:data.tipoUsuario,
-      timestamp:data.timestamp, fuente:data.fuente, reply_to:data.email
-    });
-    console.log('✓ EmailJS OK');
-  } catch(e) { console.warn('EmailJS err:', e); }
+    if (window.emailjs) {
+      await emailjs.send(EJS_SVC, EJS_TPL, {
+        nombre: data.nombre,
+        email: data.email,
+        telefono: data.telefono,
+        empresa: data.empresa,
+        cuit: data.cuit,
+        tipoUsuario: data.tipoUsuario,
+        timestamp: data.timestamp,
+        fuente: data.fuente,
+        reply_to: data.email
+      });
+    }
+  } catch (error) {
+    console.warn('EmailJS err:', error);
+  }
+
   updateCounters();
-  form.style.display='none';
-  suc.classList.add('active');
+  form.style.display = 'none';
+  successNode.classList.add('active');
 }
 
-document.getElementById('heroLeadForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  enviar({
-    nombre:this.nombre.value, email:this.email.value, telefono:this.telefono.value,
-    empresa:this.empresa.value, cuit:this.cuit.value, tipoUsuario:this.tipoUsuario.value,
-    timestamp:new Date().toISOString(), fuente:'hero'
-  }, document.getElementById('hero-submit-btn'), this, document.getElementById('heroFormSuccess'));
-});
-
-document.getElementById('modalLeadForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn=document.getElementById('modal-submit-btn');
-  await enviar({
-    nombre:this.nombre.value, email:this.email.value, telefono:this.telefono.value,
-    empresa:this.empresa.value, cuit:this.cuit.value, tipoUsuario:this.tipoUsuario.value,
-    timestamp:new Date().toISOString(), fuente:'modal'
-  }, btn, this, document.getElementById('modalFormSuccess'));
-  setTimeout(()=>{
-    closeModal('register');
-    this.style.display=''; document.getElementById('modalFormSuccess').classList.remove('active');
-    this.reset(); btn.disabled=false; btn.textContent='Quiero ser parte del entorno UNO';
-  },3000);
-});
-
-// ════════════════════════════════════════
-// MODALES
-// ════════════════════════════════════════
-function openModal(t,ut=''){
-  document.getElementById(t==='register'?'registerModal':'loginModal').classList.add('active');
-  if(t==='register'&&ut) document.getElementById('modalUserType').value=ut;
-  document.body.style.overflow='hidden';
+function openModal(type, userType = '') {
+  const modal = document.getElementById(type === 'register' ? 'registerModal' : 'loginModal');
+  if (!modal) return;
+  modal.classList.add('active');
+  if (type === 'register' && userType) {
+    const select = document.getElementById('modalUserType');
+    if (select) select.value = userType;
+  }
+  document.body.style.overflow = 'hidden';
 }
-function closeModal(t){
-  document.getElementById(t==='register'?'registerModal':'loginModal').classList.remove('active');
-  document.body.style.overflow='';
-}
-document.querySelectorAll('.modal-overlay').forEach(el=>{
-  el.addEventListener('click',e=>{if(e.target===el){el.classList.remove('active');document.body.style.overflow='';}}); 
-});
 
-// ════════════════════════════════════════
-// HELPERS CONSOLA
-// ════════════════════════════════════════
-window.verRegistros=()=>{const r=JSON.parse(localStorage.getItem('uno_registros')||'[]');console.table(r);return r;};
-window.exportarRegistrosCSV=()=>{
-  const r=JSON.parse(localStorage.getItem('uno_registros')||'[]');
-  if(!r.length){alert('Sin registros');return;}
-  const hdr=Object.keys(r[0]).join(',');
-  const rows=r.map(x=>Object.values(x).map(v=>'"'+v+'"').join(',')).join('\n');
-  const csv=hdr+'\n'+rows;
-  const a=Object.assign(document.createElement('a'),{href:URL.createObjectURL(new Blob([csv],{type:'text/csv'})),download:'registros_uno_'+new Date().toISOString().split('T')[0]+'.csv'});
-  document.body.appendChild(a);a.click();document.body.removeChild(a);
+function closeModal(type) {
+  const modal = document.getElementById(type === 'register' ? 'registerModal' : 'loginModal');
+  if (!modal) return;
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function setupForms() {
+  const heroForm = document.getElementById('heroLeadForm');
+  const modalForm = document.getElementById('modalLeadForm');
+
+  if (heroForm) {
+    heroForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      enviar({
+        nombre: this.nombre.value,
+        email: this.email.value,
+        telefono: this.telefono.value,
+        empresa: this.empresa.value,
+        cuit: this.cuit.value,
+        tipoUsuario: this.tipoUsuario.value,
+        timestamp: new Date().toISOString(),
+        fuente: 'hero'
+      }, document.getElementById('hero-submit-btn'), this, document.getElementById('heroFormSuccess'));
+    });
+  }
+
+  if (modalForm) {
+    modalForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('modal-submit-btn');
+      await enviar({
+        nombre: this.nombre.value,
+        email: this.email.value,
+        telefono: this.telefono.value,
+        empresa: this.empresa.value,
+        cuit: this.cuit.value,
+        tipoUsuario: this.tipoUsuario.value,
+        timestamp: new Date().toISOString(),
+        fuente: 'modal'
+      }, btn, this, document.getElementById('modalFormSuccess'));
+
+      window.setTimeout(() => {
+        closeModal('register');
+        this.style.display = '';
+        document.getElementById('modalFormSuccess').classList.remove('active');
+        this.reset();
+        btn.disabled = false;
+        btn.textContent = 'Quiero ser parte del entorno UNO';
+      }, 3000);
+    });
+  }
+}
+
+function setupModalOverlays() {
+  document.querySelectorAll('.modal-overlay').forEach((overlay) => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+}
+
+window.verRegistros = function () {
+  const registros = safeGetRegistros();
+  console.table(registros);
+  return registros;
 };
-window.borrarRegistros=()=>{if(confirm('Borrar TODO?'))localStorage.removeItem('uno_registros');};
-window.modificarContadores=(prov,aseg)=>{
-  if(typ
+
+window.exportarRegistrosCSV = function () {
+  const registros = safeGetRegistros();
+  if (!registros.length) {
+    alert('Sin registros');
+    return;
+  }
+  const headers = Object.keys(registros[0]).join(',');
+  const rows = registros.map((row) => Object.values(row).map((value) => `"${String(value ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
+  const csv = `${headers}\n${rows}`;
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const link = Object.assign(document.createElement('a'), {
+    href: URL.createObjectURL(blob),
+    download: `registros_uno_${new Date().toISOString().split('T')[0]}.csv`
+  });
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+window.borrarRegistros = function () {
+  if (confirm('Borrar TODO?')) {
+    updateCounters();
+  }
+};
+
+window.modificarContadores = function (preregistros, proveedores, aseguradoras) {
+  if (typeof preregistros === 'number') CFG.base_preregistros = preregistros;
+  if (typeof proveedores === 'number') CFG.base_proveedores = proveedores;
+  if (typeof aseguradoras === 'number') CFG.base_aseguradoras = aseguradoras;
+  updateCounters();
+};
+
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.scrollToPreinscripcion = scrollToPreinscripcion;
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('input[name="cuit"]').forEach(bindCuit);
+  setupForms();
+  setupModalOverlays();
+  tickCountdown();
+  updateCounters();
+  window.setInterval(tickCountdown, 1000);
+  window.setInterval(updateCounters, 30000);
+});
+</script>
+</body>
+</html>
