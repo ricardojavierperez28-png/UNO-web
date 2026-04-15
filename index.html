@@ -85,7 +85,7 @@ nav{
 .nbtn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2);}
 .nbtn-ghost:hover{border-color:var(--gold);color:var(--gold);}
 .nbtn-gold{background:var(--gold);color:var(--black);font-weight:700;}
-.nbtn-gold:hover{background:var(--gold2);transform:translateY(-1px);}
+.nbtn-gold:hover{background:var(--gold2);transform:translateY(-1px);}.nav-hamburger{display:none;background:none;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 10px;cursor:pointer;color:var(--white);font-size:18px;line-height:1;}@media(max-width:680px){.nav-hamburger{display:flex;align-items:center;}.nav-cta{display:none;}}
 
 /* ══════════════════════════════════════════════════
    HERO — 60% left / 40% right (full-height split)
@@ -440,17 +440,48 @@ footer{
   .s-ecosystem,.s-why,.s-how,.s-early,footer{padding:72px 32px;}
 }
 @media(max-width:680px){
-  nav{padding:0 16px;} .nav-links{display:none;}
-  .hero-left{padding:76px 20px 40px;}
-  .form-panel{padding:24px 20px;}
+  nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .nav-cta .nbtn-ghost{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:72px 18px 32px;border-right:none;border-bottom:1px solid var(--border);}
+  .hero-right{position:relative;top:0;height:auto;max-height:none;}
+  .form-panel{padding:20px 16px 28px;}
+  .launch-badge{padding:6px 14px;margin-bottom:24px;}
+  .launch-text{font-size:11px;letter-spacing:.08em;}
+  h1{font-size:clamp(28px,8vw,38px);}
+  .hero-tagline{font-size:14px;margin-bottom:28px;max-width:100%;}
+  .chips{margin-bottom:28px;}
+  .stats-row{gap:0;padding-top:20px;}
+  .stat-val{font-size:28px;}
+  .stat-item{padding-right:16px;margin-right:16px;}
+  .carousel-wrap{margin:0 0 20px;}
+  .cd-num{font-size:24px;}
+  .cd-box{padding:10px 2px;}
   .bento{grid-template-columns:1fr;}
   .metrics{grid-template-columns:1fr;}
   .steps-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;}
-  .s-ecosystem,.s-why,.s-how,.s-early,footer{padding:60px 20px;}
-  h1{font-size:34px;}
-  .metric-num{font-size:48px;}
-  .price-big{font-size:72px;}
+  .s-ecosystem,.s-why,.s-how,.s-early,footer{padding:56px 18px;}
+  .s-h{font-size:clamp(22px,6vw,34px);}
+  .metric-num{font-size:44px;}
+  .price-big{font-size:64px;}
+  .btn-cta{padding:16px 36px;font-size:15px;}
+  .bento-card{padding:28px 20px;}
+  .metric-card{padding:28px 20px;}
+  .step{padding:0 0 24px;margin-bottom:24px;}
+  .hero-logo-container{width:90px;margin-bottom:24px;}
+  .early-pill{padding:10px 12px;}
+  .early-pill ul li{font-size:10px;}
+  .form-head{font-size:15px;}
+  .cd-lbl{font-size:8px;}
+  .launch-tag{font-size:10px;}
+  .footer-grid{gap:32px;}
+}
+@media(max-width:380px){
+  .stat-item{padding-right:10px;margin-right:10px;}
+  .stat-val{font-size:24px;}
+  nav{padding:0 12px;}
 }
 </style>
 </head>
@@ -918,7 +949,7 @@ document.addEventListener('DOMContentLoaded', function(){ tick(); setInterval(ti
 // CONTADORES
 // ════════════════════════════════════════
 const CFG = {
-  base_preregistros:0, base_proveedores:12, base_aseguradoras:2,
+  base_preregistros:21, base_proveedores:12, base_aseguradoras:2,
   inc_prov:.5, inc_aseg:.1
 };
 function animC(el, to) {
