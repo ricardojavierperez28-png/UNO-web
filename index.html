@@ -92,8 +92,7 @@ nav{
 ══════════════════════════════════════════════════ */
 .hero{
   min-height:100vh;
-  display:grid;
-  grid-template-columns:60% 40%;
+  display:block;
   padding-top:52px;
   position:relative;
   overflow:hidden;
@@ -114,7 +113,7 @@ nav{
   display:flex;flex-direction:column;justify-content:center;
   padding:64px 56px 64px 52px;
   position:relative;z-index:2;
-  border-right:1px solid var(--border);
+  max-width:860px;
 }
 
 /* Eyebrow / launch badge */
@@ -182,102 +181,21 @@ h1{
   display:flex;align-items:center;gap:6px;
 }
 
-/* Stats */
-.stats-row{
-  display:flex;gap:0;
-  padding-top:32px;border-top:1px solid var(--border);
-}
-.stat-item{
-  flex:1;padding-right:28px;margin-right:28px;
-  border-right:1px solid var(--border);
-}
-.stat-item:last-child{border-right:none;margin-right:0;padding-right:0;}
-.stat-val{
-  font-size:36px;font-weight:800;color:var(--gold);
-  letter-spacing:-.03em;line-height:1;
-}
-.stat-val.actualizado{animation:st-pop .5s ease;}
-@keyframes st-pop{0%,100%{color:var(--gold)}50%{color:var(--gold2);transform:scale(1.1)}}
-.stat-lbl{font-size:10px;color:var(--mid);margin-top:5px;text-transform:uppercase;letter-spacing:.1em;}
+/* Stats */50%{color:var(--gold2);transform:scale(1.1)}}
 
-/* ── RIGHT 40% — Sticky form panel ── */
-.hero-right{
-  background:var(--dark);
-  overflow-y:auto;
-  position:sticky;
-  top:52px;
-  height:calc(100vh - 52px);
-  display:flex;flex-direction:column;
-}
-.form-panel{
-  padding:28px 28px 32px;
-  flex:1;display:flex;flex-direction:column;
-  overflow-y:auto;
-}
 
-/* Countdown */
-.launch-tag{
-  text-align:center;margin-bottom:14px;
-  font-size:11px;color:var(--mid);
-  text-transform:uppercase;letter-spacing:.1em;
-}
-.launch-tag strong{color:var(--gold);font-size:12px;}
-.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:18px;}
-.cd-box{
-  background:rgba(255,255,255,.05);border:1px solid var(--border2);
-  border-radius:10px;padding:12px 4px;text-align:center;
-}
-.cd-num{font-size:30px;font-weight:800;color:var(--gold);letter-spacing:-.02em;line-height:1;}
-.cd-lbl{font-size:9px;color:var(--mid);text-transform:uppercase;letter-spacing:.1em;margin-top:4px;}
 
-/* Early adopter */
-.early-pill{
-  background:linear-gradient(135deg,rgba(201,168,76,.12),rgba(201,168,76,.03));
-  border:1px solid var(--gold-bdr);border-radius:12px;
-  padding:12px 14px;margin-bottom:16px;
-}
-.early-pill-title{
-  font-size:12px;font-weight:700;color:var(--gold);margin-bottom:6px;
-  display:flex;align-items:center;gap:6px;
-}
-.early-pill ul{padding-left:14px;}
-.early-pill ul li{font-size:11px;color:var(--off);margin-top:4px;line-height:1.5;}
 
-/* Form */
-.form-head{font-size:16px;font-weight:700;color:var(--white);margin-bottom:2px;}
-.form-sub{font-size:11px;color:var(--mid);margin-bottom:14px;}
-.fg{display:flex;flex-direction:column;gap:4px;margin-bottom:9px;}
-.fg label{font-size:10px;color:var(--mid);text-transform:uppercase;letter-spacing:.07em;font-weight:500;}
-.fg input,.fg select{
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.13);
-  border-radius:8px;padding:10px 12px;
-  color:var(--white);font-size:13px;
-  font-family:inherit;outline:none;
-  transition:border-color .2s;width:100%;
-  -webkit-appearance:none;
-}
-.fg input:focus,.fg select:focus{border-color:var(--gold);background:rgba(255,255,255,.09);}
-.fg select option{background:#1a1a1a;color:var(--white);}
-.fg input::placeholder{color:#444;}
-.btn-submit{
-  width:100%;padding:13px;margin-top:10px;
-  background:var(--gold);color:var(--black);
-  border:none;border-radius:980px;
-  font-size:13px;font-weight:700;
-  cursor:pointer;font-family:inherit;
-  transition:all .25s;line-height:1.3;
-}
-.btn-submit:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,.32);}
-.btn-submit:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.form-note{font-size:10px;color:var(--dim);text-align:center;margin-top:8px;}
 
-/* Form success */
-.form-success{display:none;text-align:center;padding:40px 16px;flex:1;align-items:center;flex-direction:column;justify-content:center;}
-.form-success.active{display:flex;}
-.success-ring{width:56px;height:56px;border-radius:50%;background:rgba(52,199,89,.12);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 14px;color:var(--green);}
-.form-success h3{font-size:18px;font-weight:700;color:var(--green);margin-bottom:6px;}
-.form-success p{font-size:13px;color:var(--off);line-height:1.6;}
+
+
+
+
+
+
+
+
+
 
 /* ══════════════════════════════════════════════════
    SECTION SYSTEM — each section has its own personality
@@ -345,44 +263,7 @@ h1{
 .step-title{font-size:17px;font-weight:700;color:var(--white);margin-bottom:10px;letter-spacing:-.01em;}
 .step-desc{font-size:13px;color:#999;line-height:1.7;}
 
-/* ── S4: EARLY ADOPTER — Gold gradient, cinematic ── */
-.s-early{
-  background:linear-gradient(160deg,#0a0700 0%,#1a1000 40%,#0d0800 100%);
-  padding:100px 52px;
-  border-top:1px solid rgba(201,168,76,.1);
-  text-align:center;
-  position:relative;overflow:hidden;
-}
-.s-early::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:800px;height:400px;
-  background:radial-gradient(ellipse,rgba(201,168,76,.12) 0%,transparent 70%);
-  pointer-events:none;
-}
-.early-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--gold-dim);border:1px solid var(--gold-bdr);
-  padding:7px 20px;border-radius:980px;
-  font-size:11px;color:var(--gold);font-weight:600;
-  text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px;
-}
-.s-early h2{font-size:clamp(38px,5vw,68px);font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:14px;}
-.s-early h2 .gold{color:var(--gold);}
-.s-early > .wrap-inner > p{font-size:17px;color:#aaa;max-width:460px;margin:0 auto 36px;line-height:1.7;font-weight:300;}
-.price-row{margin:0 auto 32px;}
-.price-old{font-size:16px;color:var(--dim);text-decoration:line-through;font-weight:300;}
-.price-big{font-size:88px;font-weight:900;color:var(--gold);letter-spacing:-.05em;line-height:1;}
-.price-note{font-size:13px;color:#777;margin-top:4px;}
-.feat-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:36px;}
-.feat{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--off);}
-.feat::before{content:'✓';color:var(--gold);font-weight:700;font-size:15px;}
-.btn-cta{
-  display:inline-block;
-  padding:18px 52px;background:var(--gold);color:var(--black);
-  border:none;border-radius:980px;font-size:16px;font-weight:700;
-  cursor:pointer;font-family:inherit;transition:all .28s;letter-spacing:-.01em;
-}
-.btn-cta:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 16px 48px rgba(201,168,76,.38);}
+
 
 /* ── FOOTER ── */
 footer{
@@ -428,8 +309,6 @@ footer{
 @media(max-width:1100px){
   .hero{grid-template-columns:1fr;}
   .hero-left{padding:80px 32px 48px;border-right:none;border-bottom:1px solid var(--border);}
-  .hero-right{position:relative;top:0;height:auto;max-height:none;}
-  .form-panel{padding:32px;}
   .bento{grid-template-columns:1fr;}
   .metrics{grid-template-columns:1fr 1fr;}
   .steps-grid{grid-template-columns:1fr 1fr;}
@@ -437,7 +316,7 @@ footer{
   .step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
   .why-header{grid-template-columns:1fr;gap:24px;}
   .footer-grid{grid-template-columns:1fr 1fr;}
-  .s-ecosystem,.s-why,.s-how,.s-early,footer{padding:72px 32px;}
+  .s-ecosystem,.s-why,.s-how,footer{padding:72px 32px;}
 }
 @media(max-width:680px){
   nav{padding:0 16px;}
@@ -445,19 +324,13 @@ footer{
   .nav-cta .nbtn-ghost{display:none;}
   .hero{grid-template-columns:1fr;}
   .hero-left{padding:72px 18px 32px;border-right:none;border-bottom:1px solid var(--border);}
-  .hero-right{position:relative;top:0;height:auto;max-height:none;overflow:visible;}
-  .form-panel{padding:20px 16px 28px;overflow:visible;}
   .launch-badge{padding:6px 14px;margin-bottom:24px;}
   .launch-text{font-size:11px;letter-spacing:.08em;}
   h1{font-size:clamp(28px,8vw,38px);}
   .hero-tagline{font-size:14px;margin-bottom:28px;max-width:100%;}
   .chips{margin-bottom:28px;}
-  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding-top:20px;}
-  .stat-item{padding-right:8px;margin-right:0;border-right:1px solid var(--border);}
-  .stat-val{font-size:24px;}
   .fg input,.fg select{width:100%;box-sizing:border-box;}
   .carousel-wrap{margin:0 0 20px;}
-  .cd-grid{grid-template-columns:repeat(4,1fr);gap:4px;}
   .cd-num{font-size:22px;}
   .cd-box{padding:10px 2px;border-radius:8px;}
   .cd-lbl{font-size:8px;letter-spacing:.05em;}
@@ -465,7 +338,7 @@ footer{
   .metrics{grid-template-columns:1fr;}
   .steps-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr;}
-  .s-ecosystem,.s-why,.s-how,.s-early,footer{padding:56px 18px;}
+  .s-ecosystem,.s-why,.s-how,footer{padding:56px 18px;}
   .s-h{font-size:clamp(22px,6vw,34px);}
   .metric-num{font-size:44px;}
   .price-big{font-size:64px;}
@@ -474,47 +347,28 @@ footer{
   .metric-card{padding:28px 20px;}
   .step{padding:0 0 24px;margin-bottom:24px;}
   .hero-logo-container{width:90px;margin-bottom:24px;}
-  .early-pill{padding:10px 12px;}
-  .early-pill ul li{font-size:10px;}
   .form-head{font-size:15px;}
   .cd-lbl{font-size:8px;}
-  .launch-tag{font-size:10px;}
   .footer-grid{gap:32px;}
 }
 @media(max-width:380px){
-  .stat-item{padding-right:10px;margin-right:10px;}
-  .stat-val{font-size:24px;}
   nav{padding:0 12px;}
 }
 
 /* ── MOBILE FIXES ADICIONALES ── */
 .hero-tagline br{display:inline;}
-.stat-item{min-width:0;}
-.stat-lbl{word-break:break-word;}
 .fg{min-width:0;}
-.fg input,.fg select,.btn-submit{max-width:100%;}
+.fg input,.fg select,
 @media(max-width:680px){
   .hero-tagline br{display:none;}
-  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));}
-  .stat-item{padding:0 6px;margin:0;border-right:1px solid var(--border);}
-  .stat-item:last-child{border-right:none;}
-  .stat-val{font-size:22px;line-height:1.05;}
-  .stat-lbl{font-size:9px;line-height:1.25;letter-spacing:.06em;}
-  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
   .cd-box{padding:12px 6px;}
   .cd-num{font-size:24px;}
   .cd-lbl{font-size:10px;letter-spacing:.04em;}
   .fg input,.fg select{padding:11px 12px;font-size:16px;min-height:44px;}
-  .btn-submit{padding:14px 16px;font-size:14px;white-space:normal;}
+  
 }
 @media(max-width:420px){
   .hero-left{padding:68px 14px 28px;}
-  .form-panel{padding:18px 14px 24px;}
-  .stats-row{gap:6px;border-top:none;padding-top:8px;}
-  .stat-item{border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center;background:rgba(255,255,255,.03);}
-  .stat-item:last-child{border-right:1px solid var(--border);}
-  .stat-val{font-size:21px;}
-  .stat-lbl{font-size:8px;}
 }
 
 
@@ -522,26 +376,12 @@ footer{
 @media (max-width: 1200px){
   .hero{grid-template-columns:1fr;}
   .hero-left{border-right:none;border-bottom:1px solid var(--border);padding:72px 24px 28px;}
-  .hero-right{position:relative;top:0;height:auto;max-height:none;overflow:visible;}
-  .form-panel{overflow:visible;padding:22px 20px 28px;}
-  .stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border-top:none;padding-top:12px;}
-  .stat-item{border:none;margin:0;padding:14px 10px;border-radius:14px;background:rgba(255,255,255,.03);text-align:center;min-width:0;}
-  .stat-item:last-child{border-right:none;}
-  .stat-val{font-size:28px;line-height:1;}
-  .stat-lbl{font-size:10px;line-height:1.25;letter-spacing:.06em;word-break:break-word;}
-  .cd-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
   .cd-box{padding:12px 6px;min-width:0;overflow:hidden;}
   .cd-num{font-size:24px;}
   .cd-lbl{font-size:9px;line-height:1.2;white-space:normal;}
 }
 @media (max-width: 760px){
   .hero-left{padding:70px 16px 24px;}
-  .form-panel{padding:18px 14px 24px;}
-  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
-  .stat-item{padding:12px 8px;}
-  .stat-val{font-size:24px;}
-  .stat-lbl{font-size:9px;}
-  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
   .cd-box{padding:12px 6px;}
   .cd-num{font-size:22px;}
   .cd-lbl{font-size:9px;}
@@ -550,22 +390,18 @@ footer{
   .fg input,.fg select{font-size:16px;padding:11px 12px;min-height:44px;}
   .form-head{font-size:14px;}
   .form-sub{font-size:10px;line-height:1.4;}
-  .btn-submit{padding:12px;font-size:13px;}
+  
 }
 @media (max-width: 420px){
-  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .stat-val{font-size:22px;}
-  .stat-lbl{font-size:8px;}
 }
 
 
 
 /* ===== HOTFIX VISIBILIDAD / TABLET / CELULAR ===== */
 html,body{max-width:100%;overflow-x:hidden;}
-.hero,.hero-left,.hero-right,.form-panel,.stats-row,.cd-grid,form{min-width:0;}
-.hero-left > *, .hero-right > *{max-width:100%;}
+.hero,.hero-left,form{min-width:0;}
+.hero-left > *{max-width:100%;}
 .hero-left{justify-content:flex-start;}
-.stats-row{align-items:stretch;}
 .stat-item,.cd-box{min-width:0;}
 .stat-lbl,.cd-lbl{word-break:break-word;}
 .fg input,.fg select{min-width:0;max-width:100%;}
@@ -580,41 +416,8 @@ html,body{max-width:100%;overflow-x:hidden;}
     padding:88px 22px 30px;
     overflow-x:hidden;
   }
-  .hero-right{
-    position:relative;
-    top:0;
-    height:auto;
-    overflow:visible;
-  }
-  .form-panel{padding:22px 22px 28px;overflow:visible;}
   .carousel-wrap{margin:0 0 18px;}
   .carousel-item{padding:0 18px;font-size:12px;}
-
-  .stats-row{
-    display:grid !important;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:10px;
-    padding-top:18px;
-    border-top:1px solid var(--border);
-  }
-  .stat-item{
-    margin:0 !important;
-    padding:16px 10px !important;
-    border-right:none !important;
-    border:1px solid var(--border2);
-    border-radius:14px;
-    background:rgba(255,255,255,.03);
-    text-align:center;
-  }
-  .stat-val{font-size:32px;}
-  .stat-lbl{font-size:11px;letter-spacing:.08em;}
-
-  .cd-grid{
-    display:grid !important;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:8px;
-    width:100%;
-  }
   .cd-box{
     padding:14px 6px;
     border-radius:12px;
@@ -637,11 +440,6 @@ html,body{max-width:100%;overflow-x:hidden;}
 @media (max-width: 820px){
   .hero-left{padding:82px 18px 26px;}
   .carousel-item{padding:0 14px;font-size:11px;}
-  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
-  .stat-item{padding:14px 8px !important;}
-  .stat-val{font-size:26px;}
-  .stat-lbl{font-size:9px;letter-spacing:.06em;}
-  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
   .cd-box{padding:14px 6px;}
   .cd-num{font-size:24px;}
   .cd-lbl{font-size:10px;}
@@ -655,26 +453,16 @@ html,body{max-width:100%;overflow-x:hidden;}
   .hero-left{padding:78px 16px 24px;}
   h1{font-size:clamp(27px,8vw,36px);line-height:1.08;}
   .hero-tagline{font-size:15px;line-height:1.6;}
-  .stats-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
-  .stat-item{padding:12px 6px !important;border-radius:12px;}
-  .stat-val{font-size:24px;}
-  .stat-lbl{font-size:8px;letter-spacing:.04em;}
-  .form-panel{padding:18px 14px 24px;}
-  .launch-tag{font-size:10px;line-height:1.4;margin-bottom:10px;}
-  .cd-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-bottom:14px;}
   .cd-box{padding:12px 4px;}
   .cd-num{font-size:24px;}
   .cd-lbl{font-size:9px;}
   .form-head{font-size:16px;}
   .form-sub{font-size:12px;margin-bottom:12px;}
   .fg input,.fg select{padding:11px 10px;font-size:14px;}
-  .btn-submit{padding:12px;font-size:14px;}
+  
 }
 
 @media (max-width: 420px){
-  .stats-row{grid-template-columns:1fr;}
-  .stat-item{padding:12px 10px !important;}
-  .stat-lbl{font-size:10px;}
 }
 
 </style>
@@ -697,8 +485,8 @@ html,body{max-width:100%;overflow-x:hidden;}
     <a href="#como">Cómo funciona</a>
   </div>
   <div class="nav-cta">
-    <button class="nbtn nbtn-ghost" onclick="openModal(&#39;login&#39;)">Iniciar sesión</button>
-    <button class="nbtn nbtn-gold" onclick="scrollToPreinscripcion()">Pre-inscribirme</button>
+    <button class="nbtn nbtn-ghost" onclick="window.location.href='https://app.plataforma-uno.com/login'">Iniciar sesión</button>
+    <button class="nbtn nbtn-gold" onclick="window.location.href='https://app.plataforma-uno.com/register'">Registrarse</button>
   </div>
 </nav>
 
@@ -729,153 +517,15 @@ html,body{max-width:100%;overflow-x:hidden;}
     <p class="uno-tagline">UNO — <em>Unimos Negocios y Oportunidades</em></p>
     <p class="hero-tagline">
       El primer marketplace B2B tripartito que une empresas, transportistas,<br>
-      depósitos y aseguradoras con <strong>verificación CUIT vía AFIP</strong>
+      depósitos y aseguradoras con <strong>verificación CUIT vía ARCA (AFIP)</strong>
       y <strong>contrato electrónico</strong>.
     </p>
 
     <div class="carousel-wrap">
       <div class="carousel-track"><span class="carousel-item"><span class="cdot">✦</span>Transporte</span><span class="carousel-item"><span class="cdot">✦</span>Depósitos</span><span class="carousel-item"><span class="cdot">✦</span>Seguros</span><span class="carousel-item"><span class="cdot">✦</span>Contratos Digitales</span><span class="carousel-item"><span class="cdot">✦</span>CUIT Verificado</span><span class="carousel-item"><span class="cdot">✦</span>Almacenamiento</span><span class="carousel-item"><span class="cdot">✦</span>B2B Logístico</span><span class="carousel-item"><span class="cdot">✦</span>Matching Inteligente</span><span class="carousel-item"><span class="cdot">✦</span>Capacidad Ociosa</span><span class="carousel-item"><span class="cdot">✦</span>AFIP Integrado</span><span class="carousel-item"><span class="cdot">✦</span>Transporte</span><span class="carousel-item"><span class="cdot">✦</span>Depósitos</span><span class="carousel-item"><span class="cdot">✦</span>Seguros</span><span class="carousel-item"><span class="cdot">✦</span>Contratos Digitales</span><span class="carousel-item"><span class="cdot">✦</span>CUIT Verificado</span><span class="carousel-item"><span class="cdot">✦</span>Almacenamiento</span><span class="carousel-item"><span class="cdot">✦</span>B2B Logístico</span><span class="carousel-item"><span class="cdot">✦</span>Matching Inteligente</span><span class="carousel-item"><span class="cdot">✦</span>Capacidad Ociosa</span><span class="carousel-item"><span class="cdot">✦</span>AFIP Integrado</span></div>
+    </div></div>
     </div>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-val" id="contador-preregistros">21</div>
-        <div class="stat-lbl">Pre-inscriptos</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val" id="contador-proveedores">18</div>
-        <div class="stat-lbl">Proveedores</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-val" id="contador-aseguradoras">2</div>
-        <div class="stat-lbl">Aseguradoras</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── RIGHT 40% — sticky form ── -->
-  <div class="hero-right" id="preinscripcion-panel">
-    <div class="form-panel">
-
-      <div class="launch-tag">
-        Lanzamiento &nbsp;·&nbsp; <strong>23/04/2026 · 13:00 hs Argentina</strong>
-      </div>
-
-      <!-- Countdown -->
-      <div class="cd-grid">
-        <div class="cd-box"><div class="cd-num" id="days">00</div><div class="cd-lbl">Días</div></div>
-        <div class="cd-box"><div class="cd-num" id="hours">00</div><div class="cd-lbl">Horas</div></div>
-        <div class="cd-box"><div class="cd-num" id="minutes">00</div><div class="cd-lbl">Minutos</div></div>
-        <div class="cd-box"><div class="cd-num" id="seconds">00</div><div class="cd-lbl">Segundos</div></div>
-      </div>
-
-      <!-- Form -->
-      <div class="form-head">Pre-inscripción</div>
-      <p class="form-sub">Reservá tu lugar antes del 23/04 · Sin cargo</p>
-
-      <form id="heroLeadForm">
-        <div class="fg">
-          <label>Nombre completo</label>
-          <input type="text" name="nombre" required="" placeholder="Juan García">
-        </div>
-        <div class="fg">
-          <label>Email corporativo</label>
-          <input type="email" name="email" required="" placeholder="juan@empresa.com">
-        </div>
-        <div class="fg">
-          <label>Teléfono</label>
-          <input type="tel" name="telefono" placeholder="+54 9 351...">
-        </div>
-        <div class="fg">
-          <label>Tipo de empresa</label>
-          <select name="tipoUsuario" required="">
-            <option value="">Seleccionar...</option>
-            <option value="cliente">🏢 Necesito logística</option>
-            <option value="transporte">🚛 Proveedor de Transporte</option>
-            <option value="deposito">📦 Depósito / Almacén</option>
-            <option value="aseguradora">🛡️ Compañía de Seguros</option>
-          </select>
-        </div>
-        <div class="fg">
-          <label>Empresa / Razón Social</label>
-          <input type="text" name="empresa" required="" placeholder="Empresa SRL">
-        </div>
-        <div class="fg">
-          <label>CUIT &nbsp;<small style="color:#555;font-size:9px;text-transform:none;letter-spacing:0">(XX-XXXXXXXX-X)</small></label>
-          <input type="text" name="cuit" id="cuit-hero" required="" placeholder="XX-XXXXXXXX-X" maxlength="13" inputmode="numeric">
-        </div>
-        <button type="submit" class="btn-submit" id="hero-submit-btn">
-          Quiero ser parte del entorno UNO
-        </button>
-        <p class="form-note">🔒 Tus datos están seguros · Sin spam</p>
-      </form>
-
-      <div class="form-success" id="heroFormSuccess">
-        <div class="success-ring">✓</div>
-        <h3>¡Ya empezás a ser UNO!</h3>
-        <p>Tu pre-inscripción fue registrada. Pronto recibirás tu acceso anticipado a la plataforma.</p>
-      </div>
-
-    </div>
-  </div>
-</div><!-- /hero -->
-
-<!-- ═══════════════════════════════════════════════
-     S1 — ECOSISTEMA (Samsung bento-style)
-═══════════════════════════════════════════════ -->
-<section class="s-ecosystem" id="ecosistema">
-  <div class="s-wrap">
-    <div class="s-header">
-      <div class="s-label">Ecosistema tripartito</div>
-      <h2 class="s-h">¿Quién puede usar UNO?</h2>
-      <p class="s-sub">Una plataforma diseñada desde cero para el B2B logístico argentino, con verificación CUIT vía AFIP en tiempo real.</p>
-    </div>
-    <div class="bento">
-      <div class="bento-card">
-        <div class="bc-icon">🏢</div>
-        <div class="bc-title">Clientes</div>
-        <p class="bc-desc">Empresas que necesitan servicios logísticos de calidad al mejor precio del mercado.</p>
-        <ul class="bc-list">
-          <li>Reducí costos logísticos hasta un 35%</li>
-          <li>Cotizaciones comparativas en tiempo real</li>
-          <li>Contratos digitales automáticos y seguros</li>
-          <li>Seguro integrado en cada operación</li>
-        </ul>
-      </div>
-      <div class="bento-card">
-        <div class="bc-icon">🚛</div>
-        <div class="bc-title">Transportistas</div>
-        <p class="bc-desc">Flotas y empresas que quieren monetizar su capacidad ociosa y eliminar viajes vacíos.</p>
-        <ul class="bc-list">
-          <li>Eliminá los viajes en vacío — matching inteligente</li>
-          <li>Acceso a clientes verificados por CUIT</li>
-          <li>Gestión de cargas simplificada</li>
-          <li>Comisión 4% (Early) / 10% estándar</li>
-        </ul>
-      </div>
-      <div class="bento-card">
-        <div class="bc-icon">📦</div>
-        <div class="bc-title">Depósitos</div>
-        <p class="bc-desc">Operadores logísticos con m² ociosos que quieren maximizar su ocupación.</p>
-        <ul class="bc-list">
-          <li>Ocupá tu capacidad disponible</li>
-          <li>Gestión de reservas 100% digital</li>
-          <li>Seguros automáticos en cada operación</li>
-          <li>Clientes verificados por CUIT</li>
-        </ul>
-      </div>
-      <div class="bento-card">
-        <div class="bc-icon">🛡️</div>
-        <div class="bc-title">Aseguradoras</div>
-        <p class="bc-desc">Compañías con productos logísticos que buscan un canal B2B especializado y eficiente.</p>
-        <ul class="bc-list">
-          <li>Canal de ventas B2B especializado</li>
-          <li>Datos de riesgo detallados por operación</li>
-          <li>Contratación integrada al flujo de la plataforma</li>
-          <li>Portfolio logístico diversificado</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- ═══════════════════════════════════════════════
@@ -904,7 +554,7 @@ html,body{max-width:100%;overflow-x:hidden;}
         <p class="metric-desc">Los depósitos tienen casi la mitad de su m² sin usar. UNO conecta oferta con demanda real.</p>
       </div>
       <div class="metric-card">
-        <div class="metric-num">48 hs</div>
+        <div class="metric-num">48/72 hs</div>
         <div class="metric-title">Para coordinar</div>
         <p class="metric-desc">El tiempo promedio para coordinar un flete. Con UNO se reduce a minutos con cotización automática.</p>
       </div>
@@ -953,28 +603,6 @@ html,body{max-width:100%;overflow-x:hidden;}
 </section>
 
 <!-- ═══════════════════════════════════════════════
-     S4 — EARLY ADOPTER (Cinematic gold)
-═══════════════════════════════════════════════ -->
-<section class="s-early">
-  <div class="wrap-inner s-wrap" style="position:relative;z-index:2;">
-    <div class="early-badge">🎯 Oferta exclusiva · Cupos limitados</div>
-    <h2>Early <span class="gold">Adopter</span></h2>
-    <p>Inscribite antes del lanzamiento y accedé a beneficios exclusivos por 6 meses completos.</p>
-    <div class="price-row">
-      <div class="price-old">Comisión estándar: 10%</div>
-      <div class="price-big">4%</div>
-      <div class="price-note">de comisión por 6 meses · Solo inscriptos antes del 23/04/2026</div>
-    </div>
-    <div class="feat-row">
-      <span class="feat">Comisión 4% por 6 meses</span>
-      <span class="feat">Soporte dedicado al onboarding</span>
-      <span class="feat">Insignia Early Adopter</span>
-    </div>
-    <button class="btn-cta" onclick="scrollToPreinscripcion()">Quiero ser parte del entorno UNO</button>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════════════ -->
 <footer>
@@ -1004,7 +632,6 @@ html,body{max-width:100%;overflow-x:hidden;}
         <a href="#ecosistema">Ecosistema</a>
         <a href="#por-que">Por qué UNO</a>
         <a href="#como">Cómo funciona</a>
-        <a href="#preinscripcion-panel" onclick="scrollToPreinscripcion();return false;">Pre-inscripción</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1021,60 +648,6 @@ html,body{max-width:100%;overflow-x:hidden;}
     </div>
   </div>
 </footer>
-
-<!-- ═══════════════════════════════════════════════
-     MODAL REGISTRO
-═══════════════════════════════════════════════ -->
-<div class="modal-overlay" id="registerModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal(&#39;register&#39;)">×</button>
-    <div class="modal-title">Pre-inscripción</div>
-    <p class="modal-sub">Completá tus datos y reservá tu lugar antes del lanzamiento del 23/04.</p>
-    <form id="modalLeadForm">
-      <div class="fg"><label>Nombre completo</label><input type="text" name="nombre" required="" placeholder="Juan García"></div>
-      <div class="fg"><label>Email corporativo</label><input type="email" name="email" required="" placeholder="juan@empresa.com"></div>
-      <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+54 9 351..."></div>
-      <div class="fg">
-        <label>Tipo de empresa</label>
-        <select name="tipoUsuario" id="modalUserType" required="">
-          <option value="">Seleccionar...</option>
-          <option value="cliente">🏢 Necesito logística</option>
-          <option value="transporte">🚛 Proveedor de Transporte</option>
-          <option value="deposito">📦 Depósito / Almacén</option>
-          <option value="aseguradora">🛡️ Compañía de Seguros</option>
-        </select>
-      </div>
-      <div class="fg"><label>Empresa / Razón Social</label><input type="text" name="empresa" required="" placeholder="Empresa SRL"></div>
-      <div class="fg">
-        <label>CUIT <small style="color:#555;font-size:9px;text-transform:none;letter-spacing:0">(XX-XXXXXXXX-X)</small></label>
-        <input type="text" name="cuit" id="cuit-modal" required="" placeholder="XX-XXXXXXXX-X" maxlength="13" inputmode="numeric">
-      </div>
-      <button type="submit" class="btn-submit" id="modal-submit-btn" style="margin-top:14px;">
-        Quiero ser parte del entorno UNO
-      </button>
-      <p class="form-note">🔒 Tus datos están seguros · Sin spam</p>
-    </form>
-    <div class="form-success" id="modalFormSuccess">
-      <div class="success-ring">✓</div>
-      <h3>¡Ya empezás a ser UNO!</h3>
-      <p>Tu pre-inscripción fue registrada. Pronto recibirás tu acceso anticipado a la plataforma.</p>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL LOGIN -->
-<div class="modal-overlay" id="loginModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal(&#39;login&#39;)">×</button>
-    <div class="modal-title">Iniciar sesión</div>
-    <p class="modal-sub">Ingresá a tu cuenta de Plataforma UNO</p>
-    <form>
-      <div class="fg" style="margin-bottom:12px;"><label>Email</label><input type="email" required="" placeholder="juan@empresa.com"></div>
-      <div class="fg" style="margin-bottom:14px;"><label>Contraseña</label><input type="password" required="" placeholder="••••••••"></div>
-      <button type="button" class="btn-submit">Ingresar</button>
-      <p class="form-note" style="margin-top:12px;">¿No tenés cuenta? <a href="#" onclick="closeModal(&#39;login&#39;);openModal(&#39;register&#39;);return false;" style="color:var(--gold)">Registrate aquí</a></p>
-    </form>
-  </div>
 </div>
 
 <!-- WA FLOAT -->
@@ -1083,17 +656,6 @@ html,body{max-width:100%;overflow-x:hidden;}
 </a>
 
 <script>
-function scrollToPreinscripcion() {
-  const panel = document.getElementById('preinscripcion-panel');
-  if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-if (window.emailjs) {
-  emailjs.init({ publicKey: '6YzY3GTPfZvpi_tKt' });
-}
-const EJS_SVC = 'service_mdvroun';
-const EJS_TPL = 'template_2gcqkd9';
-
 function bindCuit(inp) {
   if (!inp) return;
   inp.addEventListener('keydown', function (e) {
@@ -1112,252 +674,8 @@ function bindCuit(inp) {
   });
 }
 
-function safeGetRegistros() {
-  return [];
-}
-
-function safeSetRegistros(registros) {
-  return registros;
-}
-
-const CFG = {
-  base_preregistros: 21,
-  base_proveedores: 18,
-  base_aseguradoras: 2
-};
-
-// ── Acumulación persistente por navegador ──
-const LS_ACUM = 'uno_acumulado_v1';
-
-function leerAcumulado() {
-  try {
-    const raw = localStorage.getItem(LS_ACUM);
-    if (!raw) return { pre: 0, prov: 0, aseg: 0 };
-    const p = JSON.parse(raw);
-    return {
-      pre:  (typeof p.pre  === 'number') ? p.pre  : 0,
-      prov: (typeof p.prov === 'number') ? p.prov : 0,
-      aseg: (typeof p.aseg === 'number') ? p.aseg : 0
-    };
-  } catch (e) { return { pre: 0, prov: 0, aseg: 0 }; }
-}
-
-function guardarAcumulado(a) {
-  try { localStorage.setItem(LS_ACUM, JSON.stringify(a)); } catch (e) {}
-}
-
-// Mapea valor del select → clave del contador e incrementa +1
-function acumularPorTipo(tipoUsuario) {
-  const a = leerAcumulado();
-  const t = String(tipoUsuario || '').toLowerCase();
-  if (t === 'cliente')                             a.pre  += 1;
-  else if (t === 'transporte' || t === 'deposito') a.prov += 1;
-  else if (t === 'aseguradora')                    a.aseg += 1;
-  else return;
-  guardarAcumulado(a);
-}
-
-function setCounterValue(id, value) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const nextValue = Math.max(0, Number(value) || 0);
-  const currentValue = Number(el.textContent.replace(/\D/g, '')) || 0;
-  if (currentValue === nextValue) return;
-
-  const distance = nextValue - currentValue;
-  const steps = Math.min(18, Math.max(1, Math.abs(distance)));
-  let step = 0;
-  const timer = window.setInterval(() => {
-    step += 1;
-    const progress = step / steps;
-    el.textContent = String(Math.round(currentValue + distance * progress));
-    if (step >= steps) {
-      window.clearInterval(timer);
-      el.textContent = String(nextValue);
-      el.classList.add('actualizado');
-      window.setTimeout(() => el.classList.remove('actualizado'), 500);
-    }
-  }, 22);
-}
-
-function updateCounters() {
-  const a = leerAcumulado();
-  setCounterValue('contador-preregistros', CFG.base_preregistros + a.pre);
-  setCounterValue('contador-proveedores',  CFG.base_proveedores  + a.prov);
-  setCounterValue('contador-aseguradoras', CFG.base_aseguradoras + a.aseg);
-}
-
-function tickCountdown() {
-  const launch = new Date('2026-04-23T15:00:00-03:00').getTime();
-  const diff = Math.max(0, launch - Date.now());
-  const totalSeconds = Math.floor(diff / 1000);
-  const days = Math.floor(totalSeconds / 86400);
-  const hours = Math.floor((totalSeconds % 86400) / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-
-  const parts = { days, hours, minutes, seconds };
-  Object.entries(parts).forEach(([id, value]) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = String(value).padStart(2, '0');
-  });
-}
-
-async function enviar(data, btn, form, successNode) {
-  btn.disabled = true;
-  btn.textContent = 'Enviando...';
-
-
-  try {
-    if (window.emailjs) {
-      await emailjs.send(EJS_SVC, EJS_TPL, {
-        nombre: data.nombre,
-        email: data.email,
-        telefono: data.telefono,
-        empresa: data.empresa,
-        cuit: data.cuit,
-        tipoUsuario: data.tipoUsuario,
-        timestamp: data.timestamp,
-        fuente: data.fuente,
-        reply_to: data.email
-      });
-    }
-  } catch (error) {
-    console.warn('EmailJS err:', error);
-  }
-
-  acumularPorTipo(data.tipoUsuario);
-  updateCounters();
-  form.style.display = 'none';
-  successNode.classList.add('active');
-}
-
-function openModal(type, userType = '') {
-  const modal = document.getElementById(type === 'register' ? 'registerModal' : 'loginModal');
-  if (!modal) return;
-  modal.classList.add('active');
-  if (type === 'register' && userType) {
-    const select = document.getElementById('modalUserType');
-    if (select) select.value = userType;
-  }
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal(type) {
-  const modal = document.getElementById(type === 'register' ? 'registerModal' : 'loginModal');
-  if (!modal) return;
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-function setupForms() {
-  const heroForm = document.getElementById('heroLeadForm');
-  const modalForm = document.getElementById('modalLeadForm');
-
-  if (heroForm) {
-    heroForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      enviar({
-        nombre: this.nombre.value,
-        email: this.email.value,
-        telefono: this.telefono.value,
-        empresa: this.empresa.value,
-        cuit: this.cuit.value,
-        tipoUsuario: this.tipoUsuario.value,
-        timestamp: new Date().toISOString(),
-        fuente: 'hero'
-      }, document.getElementById('hero-submit-btn'), this, document.getElementById('heroFormSuccess'));
-    });
-  }
-
-  if (modalForm) {
-    modalForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const btn = document.getElementById('modal-submit-btn');
-      await enviar({
-        nombre: this.nombre.value,
-        email: this.email.value,
-        telefono: this.telefono.value,
-        empresa: this.empresa.value,
-        cuit: this.cuit.value,
-        tipoUsuario: this.tipoUsuario.value,
-        timestamp: new Date().toISOString(),
-        fuente: 'modal'
-      }, btn, this, document.getElementById('modalFormSuccess'));
-
-      window.setTimeout(() => {
-        closeModal('register');
-        this.style.display = '';
-        document.getElementById('modalFormSuccess').classList.remove('active');
-        this.reset();
-        btn.disabled = false;
-        btn.textContent = 'Quiero ser parte del entorno UNO';
-      }, 3000);
-    });
-  }
-}
-
-function setupModalOverlays() {
-  document.querySelectorAll('.modal-overlay').forEach((overlay) => {
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    });
-  });
-}
-
-window.verRegistros = function () {
-  const registros = safeGetRegistros();
-  console.table(registros);
-  return registros;
-};
-
-window.exportarRegistrosCSV = function () {
-  const registros = safeGetRegistros();
-  if (!registros.length) {
-    alert('Sin registros');
-    return;
-  }
-  const headers = Object.keys(registros[0]).join(',');
-  const rows = registros.map((row) => Object.values(row).map((value) => `"${String(value ?? '').replace(/"/g, '""')}"`).join(',')).join('\n');
-  const csv = `${headers}\n${rows}`;
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-  const link = Object.assign(document.createElement('a'), {
-    href: URL.createObjectURL(blob),
-    download: `registros_uno_${new Date().toISOString().split('T')[0]}.csv`
-  });
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
-window.borrarRegistros = function () {
-  if (confirm('Borrar TODO?')) {
-    updateCounters();
-  }
-};
-
-window.modificarContadores = function (preregistros, proveedores, aseguradoras) {
-  if (typeof preregistros === 'number') CFG.base_preregistros = preregistros;
-  if (typeof proveedores === 'number') CFG.base_proveedores = proveedores;
-  if (typeof aseguradoras === 'number') CFG.base_aseguradoras = aseguradoras;
-  updateCounters();
-};
-
-window.openModal = openModal;
-window.closeModal = closeModal;
-window.scrollToPreinscripcion = scrollToPreinscripcion;
-
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('input[name="cuit"]').forEach(bindCuit);
-  setupForms();
-  setupModalOverlays();
-  tickCountdown();
-  updateCounters();
-  window.setInterval(tickCountdown, 1000);
-  window.setInterval(updateCounters, 30000);
 });
 </script>
 </body>
