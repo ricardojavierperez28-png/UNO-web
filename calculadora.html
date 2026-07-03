@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plataforma UNO — ¿Cuánto te cuesta NO usarla?</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700&display=swap');
+  :root{
+    --gold:#C9A84C; --gold-light:#E8C96A; --black:#0A0A0A; --dark:#111; --dark2:#1A1A1A;
+    --white:#fff; --muted:#888; --red:#D44B3C;
+    --dador:#4A9EFF; --trans:#4AE87A; --depo:#FF8C4A; --aseg:#B44AFF;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#1C1C1C;font-family:'Barlow',sans-serif;color:var(--white);line-height:1.6}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 20px 80px}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;color:var(--gold);text-align:center}
+  h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(34px,5vw,58px);letter-spacing:1px;text-align:center;line-height:1;margin:14px 0 8px}
+  h1 span{color:var(--gold)}
+  .sub{text-align:center;color:#aaa;font-weight:300;max-width:560px;margin:0 auto 28px;font-size:15px}
+  /* tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:8px}
+  .tab{padding:9px 18px;border:1px solid #333;border-radius:3px;font-family:'Barlow Condensed',sans-serif;
+       font-weight:600;letter-spacing:1.2px;text-transform:uppercase;font-size:12px;color:#999;background:transparent;cursor:pointer;transition:.2s}
+  .tab:hover{border-color:var(--gold);color:var(--gold)}
+  .tab.active{color:#0A0A0A;border-color:transparent}
+  .tab[data-seg="dador"].active{background:var(--dador)}
+  .tab[data-seg="transportista"].active{background:var(--trans)}
+  .tab[data-seg="deposito"].active{background:var(--depo)}
+  .tab[data-seg="aseguradora"].active{background:var(--aseg)}
+  /* currency */
+  .cur{display:flex;justify-content:center;gap:6px;margin:14px 0 22px}
+  .cur button{padding:5px 14px;border:1px solid #333;background:transparent;color:#888;border-radius:3px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;font-size:12px}
+  .cur button.active{background:var(--gold);color:#0A0A0A;border-color:var(--gold)}
+  /* panel */
+  .panel{display:none;background:var(--dark2);border:1px solid #262626;border-radius:8px;overflow:hidden}
+  .panel.active{display:grid;grid-template-columns:1fr 1fr}
+  .inputs{padding:30px 30px 36px;border-right:1px solid #242424}
+  .result{padding:30px;display:flex;flex-direction:column;justify-content:center;background:var(--black)}
+  .eyebrow{font-family:'Barlow Condensed',sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:11px;margin-bottom:18px}
+  .seg-dador .eyebrow,.seg-dador h2 span{color:var(--dador)}
+  .seg-transportista .eyebrow,.seg-transportista h2 span{color:var(--trans)}
+  .seg-deposito .eyebrow,.seg-deposito h2 span{color:var(--depo)}
+  .seg-aseguradora .eyebrow,.seg-aseguradora h2 span{color:var(--aseg)}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:12px;color:#9a9a9a;font-weight:500;margin-bottom:5px;letter-spacing:.3px}
+  .field .hint{color:#666;font-weight:300}
+  .field input[type=number]{width:100%;background:#0E0E0E;border:1px solid #2E2E2E;border-radius:4px;color:#fff;
+       padding:10px 12px;font-family:'Barlow',sans-serif;font-size:15px}
+  .field input:focus{outline:none;border-color:var(--gold)}
+  .row{display:flex;gap:12px}
+  .row .field{flex:1}
+  .slider-val{float:right;color:var(--gold);font-weight:700}
+  input[type=range]{width:100%;accent-color:var(--gold);margin-top:8px}
+  /* result */
+  .result .eyebrow{color:var(--red)}
+  h2{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:#bbb;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .big{font-family:'Bebas Neue',sans-serif;font-size:clamp(46px,8vw,76px);line-height:.95;color:var(--red);letter-spacing:1px}
+  .big-label{color:#888;font-size:13px;margin-top:4px;margin-bottom:22px}
+  .breakdown{border-top:1px solid #222;padding-top:16px;margin-top:4px}
+  .brk-row{display:flex;justify-content:space-between;padding:7px 0;font-size:13px;color:#aaa;border-bottom:1px solid #1a1a1a}
+  .brk-row b{color:#fff;font-weight:600;font-family:'Barlow Condensed',sans-serif;font-size:16px;letter-spacing:.5px}
+  .recover{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:6px;padding:14px 16px;margin-top:18px}
+  .recover .rlabel{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-family:'Barlow Condensed',sans-serif}
+  .recover .rnum{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--gold-light);line-height:1;margin-top:2px}
+  .recover small{color:#888;font-size:12px}
+  .cta{display:block;text-align:center;margin-top:20px;background:var(--gold);color:#0A0A0A;padding:14px;border-radius:3px;
+       font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-size:14px}
+  .monthly{text-align:center;color:#777;font-size:12px;margin-top:10px}
+  .monthly b{color:var(--red)}
+  .foot{text-align:center;color:#555;font-size:12px;margin-top:24px}
+  .foot a{color:var(--gold);text-decoration:none}
+  .assump{font-size:11px;color:#666;margin-top:14px;font-style:italic}
+  @media(max-width:760px){.panel.active{grid-template-columns:1fr}.inputs{border-right:none;border-bottom:1px solid #242424}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="logo">PLATAFORMA UNO</div>
+  <h1>¿Cuánto te cuesta <span>NO usar UNO?</span></h1>
+  <p class="sub">No te explicamos qué hace la plataforma. Te mostramos, en tu propia moneda, cuánto dinero dejás sobre la mesa cada mes que seguís igual. Cargá tus números.</p>
+
+  <div class="tabs">
+    <button class="tab active" data-seg="dador">Dador de carga</button>
+    <button class="tab" data-seg="transportista">Transportista</button>
+    <button class="tab" data-seg="deposito">Depósito</button>
+    <button class="tab" data-seg="aseguradora">Aseguradora / PAS</button>
+  </div>
+  <div class="cur">
+    <span style="color:#666;font-size:12px;align-self:center;margin-right:4px">Moneda:</span>
+    <button data-cur="USD" class="active">USD</button>
+    <button data-cur="ARS">ARS $</button>
+  </div>
+
+  <!-- DADOR -->
+  <section class="panel seg-dador active" id="p-dador">
+    <div class="inputs">
+      <div class="eyebrow">Tus números — Dador de carga</div>
+      <div class="field"><label>Gasto mensual en fletes <span class="hint">(lo que pagás hoy)</span></label>
+        <input type="number" id="d_gasto" value="8000"></div>
+      <div class="row">
+        <div class="field"><label>Comisión / sobrecosto de intermediarios hoy (%)</label>
+          <input type="number" id="d_comtrad" value="17"></div>
+        <div class="field"><label>Comisión UNO (%)</label>
+          <input type="number" id="d_comuno" value="5"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Horas/mes coordinando logística</label>
+          <input type="number" id="d_horas" value="70"></div>
+        <div class="field"><label>Costo de esa hora</label>
+          <input type="number" id="d_costoh" value="8"></div>
+      </div>
+      <p class="assump">Valores editables. Cambialos por los tuyos reales.</p>
+    </div>
+    <div class="result">
+      <div class="eyebrow">Lo que perdés por año</div>
+      <h2>Si seguís coordinando por <span>WhatsApp y teléfono</span></h2>
+      <div class="big" id="d_big">—</div>
+      <div class="big-label">de sobrecosto y tiempo que no recuperás</div>
+      <div class="breakdown">
+        <div class="brk-row"><span>Sobrecosto de intermediación / año</span><b id="d_brk1">—</b></div>
+        <div class="brk-row"><span>Horas de gestión / año</span><b id="d_brk2">—</b></div>
+      </div>
+      <div class="recover">
+        <div class="rlabel">Recuperable con UNO</div>
+        <div class="rnum" id="d_rec">—</div>
+        <small>Bajás la comisión al 5% y la coordinación a 3 minutos por operación.</small>
+      </div>
+      <div class="monthly">Cada mes que esperás: <b id="d_mes">—</b></div>
+      <a class="cta" href="https://www.plataforma-uno.com" target="_blank">Quiero recuperar esto →</a>
+    </div>
+  </section>
+
+  <!-- TRANSPORTISTA -->
+  <section class="panel seg-transportista" id="p-transportista">
+    <div class="inputs">
+      <div class="eyebrow">Tus números — Transportista</div>
+      <div class="row">
+        <div class="field"><label>Viajes por mes (toda la flota)</label>
+          <input type="number" id="t_viajes" value="48"></div>
+        <div class="field"><label>% que vuelven vacíos<br><span class="hint">(Argentina ≈ 37%)</span></label>
+          <input type="number" id="t_vacio" value="37"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Km promedio del tramo de retorno</label>
+          <input type="number" id="t_km" value="300"></div>
+        <div class="field"><label>Tarifa por km que cobrarías</label>
+          <input type="number" id="t_tarifa" value="1.2"></div>
+      </div>
+      <div class="field"><label>% de esos retornos que UNO te ayuda a llenar <span class="slider-val" id="t_capv">30%</span></label>
+        <input type="range" id="t_cap" min="10" max="80" value="30"></div>
+      <p class="assump">El gasoil, el desgaste y el chofer ya los pagaste. La pregunta es si cobrás el viaje o no.</p>
+    </div>
+    <div class="result">
+      <div class="eyebrow">Lo que tira tu flota por año</div>
+      <h2>Cada km vacío <span>ya está pago</span></h2>
+      <div class="big" id="t_big">—</div>
+      <div class="big-label">de capacidad que pagás y no cobrás</div>
+      <div class="breakdown">
+        <div class="brk-row"><span>Retornos vacíos por mes</span><b id="t_brk1">—</b></div>
+        <div class="brk-row"><span>Ingreso perdido por mes</span><b id="t_brk2">—</b></div>
+      </div>
+      <div class="recover">
+        <div class="rlabel">Recuperable con UNO</div>
+        <div class="rnum" id="t_rec">—</div>
+        <small>Llenando una parte de esos retornos con carga de la red.</small>
+      </div>
+      <div class="monthly">Cada mes que tu camión vuelve vacío: <b id="t_mes">—</b></div>
+      <a class="cta" href="https://www.plataforma-uno.com" target="_blank">Quiero cargar mi disponibilidad →</a>
+    </div>
+  </section>
+
+  <!-- DEPOSITO -->
+  <section class="panel seg-deposito" id="p-deposito">
+    <div class="inputs">
+      <div class="eyebrow">Tus números — Depósito</div>
+      <div class="row">
+        <div class="field"><label>m² ociosos hoy</label>
+          <input type="number" id="x_m2" value="500"></div>
+        <div class="field"><label>Tarifa por m² / mes <span class="hint">(GBA ≈ 7,25)</span></label>
+          <input type="number" id="x_tarifa" value="7.25"></div>
+      </div>
+      <div class="field"><label>% de esos m² que UNO te ayuda a ocupar <span class="slider-val" id="x_capv">40%</span></label>
+        <input type="range" id="x_cap" min="10" max="90" value="40"></div>
+      <p class="assump">El alquiler, los impuestos y la seguridad del galpón corren igual estén llenos o vacíos.</p>
+    </div>
+    <div class="result">
+      <div class="eyebrow">Lo que no facturás por año</div>
+      <h2>Cada m² libre es <span>costo fijo sin retorno</span></h2>
+      <div class="big" id="x_big">—</div>
+      <div class="big-label">de ingreso que tu espacio podría generar</div>
+      <div class="breakdown">
+        <div class="brk-row"><span>Ingreso no facturado / mes</span><b id="x_brk1">—</b></div>
+        <div class="brk-row"><span>m² ociosos</span><b id="x_brk2">—</b></div>
+      </div>
+      <div class="recover">
+        <div class="rlabel">Recuperable con UNO</div>
+        <div class="rnum" id="x_rec">—</div>
+        <small>Poniendo a la venta tu capacidad libre ante empresas verificadas.</small>
+      </div>
+      <div class="monthly">Cada mes con el galpón a medio llenar: <b id="x_mes">—</b></div>
+      <a class="cta" href="https://www.plataforma-uno.com" target="_blank">Quiero publicar mi espacio →</a>
+    </div>
+  </section>
+
+  <!-- ASEGURADORA -->
+  <section class="panel seg-aseguradora" id="p-aseguradora">
+    <div class="inputs">
+      <div class="eyebrow">Tu oportunidad — Aseguradora / PAS</div>
+      <div class="row">
+        <div class="field"><label>Operaciones/mes en tu zona<br><span class="hint">(transporte + depósito)</span></label>
+          <input type="number" id="a_ops" value="200"></div>
+        <div class="field"><label>% que contrata seguro en el flujo</label>
+          <input type="number" id="a_conv" value="60"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>Prima promedio por operación</label>
+          <input type="number" id="a_prima" value="45"></div>
+        <div class="field"><label>Tu comisión PAS (%)</label>
+          <input type="number" id="a_com" value="15"></div>
+      </div>
+      <p class="assump">No es pérdida: es un canal que aparece justo cuando el cliente cierra y tiene la plata comprometida.</p>
+    </div>
+    <div class="result">
+      <div class="eyebrow" style="color:var(--aseg)">Canal nuevo — ingreso por año</div>
+      <h2>Una propuesta de seguro en <span>cada operación</span></h2>
+      <div class="big" id="a_big" style="color:var(--aseg)">—</div>
+      <div class="big-label">de comisiones potenciales sin invertir en captación</div>
+      <div class="breakdown">
+        <div class="brk-row"><span>Pólizas potenciales / mes</span><b id="a_brk1">—</b></div>
+        <div class="brk-row"><span>Prima intermediada / mes</span><b id="a_brk2">—</b></div>
+      </div>
+      <div class="recover" style="background:rgba(180,74,255,.1);border-color:rgba(180,74,255,.3)">
+        <div class="rlabel" style="color:var(--aseg)">A medida que UNO escala</div>
+        <div class="rnum" id="a_rec" style="color:#d9b3ff">—</div>
+        <small>El volumen de operaciones —y de pólizas— crece de forma orgánica.</small>
+      </div>
+      <a class="cta" href="mailto:contacto@plataforma-uno.com" style="background:var(--aseg);color:#fff">Quiero sumarme como partner →</a>
+    </div>
+  </section>
+
+  <p class="foot">
+    Los resultados se calculan en vivo sobre los valores que cargás. Son estimaciones para dimensionar el costo de oportunidad, no una cotización.<br>
+    <a href="https://www.plataforma-uno.com" target="_blank">plataforma-uno.com</a> · contacto@plataforma-uno.com
+  </p>
+</div>
+
+<script>
+  let CUR = 'USD';
+  const fmt = n => {
+    n = Math.round(n);
+    const s = n.toLocaleString('es-AR');
+    return CUR === 'USD' ? 'USD ' + s : '$ ' + s;
+  };
+  const val = id => parseFloat(document.getElementById(id).value) || 0;
+
+  function calcDador(){
+    const gasto=val('d_gasto'), tradPct=val('d_comtrad'), unoPct=val('d_comuno');
+    const horas=val('d_horas'), ch=val('d_costoh');
+    const ahorroComMes = gasto * Math.max(0,(tradPct-unoPct))/100;
+    const tiempoMes = horas * ch;
+    const perdidaMes = ahorroComMes + tiempoMes;
+    document.getElementById('d_big').textContent = fmt(perdidaMes*12);
+    document.getElementById('d_brk1').textContent = fmt(ahorroComMes*12);
+    document.getElementById('d_brk2').textContent = fmt(tiempoMes*12);
+    document.getElementById('d_rec').textContent = fmt(perdidaMes*12);
+    document.getElementById('d_mes').textContent = fmt(perdidaMes);
+  }
+  function calcTrans(){
+    const viajes=val('t_viajes'), vacio=val('t_vacio')/100, km=val('t_km'), tar=val('t_tarifa');
+    const cap=val('t_cap')/100;
+    const retornos = viajes*vacio;
+    const perdidaMes = retornos*km*tar;
+    document.getElementById('t_capv').textContent = val('t_cap')+'%';
+    document.getElementById('t_big').textContent = fmt(perdidaMes*12);
+    document.getElementById('t_brk1').textContent = Math.round(retornos);
+    document.getElementById('t_brk2').textContent = fmt(perdidaMes);
+    document.getElementById('t_rec').textContent = fmt(perdidaMes*12*cap);
+    document.getElementById('t_mes').textContent = fmt(perdidaMes);
+  }
+  function calcDepo(){
+    const m2=val('x_m2'), tar=val('x_tarifa'), cap=val('x_cap')/100;
+    const mes = m2*tar;
+    document.getElementById('x_capv').textContent = val('x_cap')+'%';
+    document.getElementById('x_big').textContent = fmt(mes*12);
+    document.getElementById('x_brk1').textContent = fmt(mes);
+    document.getElementById('x_brk2').textContent = Math.round(m2)+' m²';
+    document.getElementById('x_rec').textContent = fmt(mes*12*cap);
+    document.getElementById('x_mes').textContent = fmt(mes);
+  }
+  function calcAseg(){
+    const ops=val('a_ops'), conv=val('a_conv')/100, prima=val('a_prima'), com=val('a_com')/100;
+    const polizas = ops*conv;
+    const primaMes = polizas*prima;
+    const comMes = primaMes*com;
+    document.getElementById('a_big').textContent = fmt(comMes*12);
+    document.getElementById('a_brk1').textContent = Math.round(polizas);
+    document.getElementById('a_brk2').textContent = fmt(primaMes);
+    document.getElementById('a_rec').textContent = fmt(comMes*12*1.5)+' +';
+  }
+  function calcAll(){ calcDador(); calcTrans(); calcDepo(); calcAseg(); }
+
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('p-'+t.dataset.seg).classList.add('active');
+  }));
+  document.querySelectorAll('.cur button').forEach(b=>b.addEventListener('click',()=>{
+    document.querySelectorAll('.cur button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); CUR=b.dataset.cur; calcAll();
+  }));
+  document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calcAll));
+  calcAll();
+</script>
+</body>
+</html>
