@@ -159,6 +159,17 @@
       display: flex; gap: 10px; align-items: center;
     }
 
+    .btn-newsletter-nav {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(212,175,55,0.08);
+      white-space: nowrap;
+    }
+    .btn-newsletter-nav:hover {
+      color: #0E0E0E;
+      background: var(--gold);
+    }
+
     .btn-outline-nav {
       padding: 9px 22px;
       border: 1.5px solid var(--border);
@@ -914,6 +925,10 @@
       nav { padding: 0 14px; }
       .btn-outline-nav, .btn-gold-nav { padding: 6px 10px; font-size: 11px; }
       nav { padding: 0 10px; gap: 6px; }
+      .nav-actions { gap: 5px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+      .nav-actions::-webkit-scrollbar { display: none; }
+      .nav-actions a { flex: 0 0 auto; white-space: nowrap; }
+      .btn-newsletter-nav { order: -1; }
       footer { padding: 48px 18px 28px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
@@ -933,6 +948,10 @@
 
   <!-- Right: Auth buttons -->
   <div class="nav-actions">
+    <a href="newsletters/index.html" class="btn-outline-nav btn-newsletter-nav"
+       onclick="trackEvent('click','nav','newsletters')">
+      Newsletters
+    </a>
     <a href="https://app.plataforma-uno.com/login" class="btn-outline-nav"
        onclick="trackEvent('click','nav','iniciar_sesion');unoCount('login')">
       Iniciar Sesión
