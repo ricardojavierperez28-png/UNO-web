@@ -201,7 +201,7 @@
   <p>Buenos Aires concentra la mayor parte del movimiento de cargas del país: puerto, Mercado Central, parques logísticos del conurbano y las rutas troncales hacia todas las provincias. Esa densidad juega a tu favor: más transportistas compitiendo por tu carga significa mejor precio y respuesta más rápida.</p>
   <div class="ctas">
     <a href="https://app.plataforma-uno.com/register" class="btn" onclick="trackEvent('click','seo_transporte-de-cargas-buenos-aires','hero_publicar')">Publicar mi necesidad gratis →</a>
-    <a href="https://wa.me/5493512003851?text=Hola%20UNO%2C%20necesito%20transporte%20de%20cargas%20en%20Buenos%20Aires" class="btn-outline" target="_blank" rel="noopener" onclick="trackEvent('click','seo_transporte-de-cargas-buenos-aires','hero_whatsapp')">Consultar por WhatsApp</a>
+    <a href="https://wa.me/5493516528839?text=Hola%20UNO%2C%20necesito%20transporte%20de%20cargas%20en%20Buenos%20Aires" class="btn-outline" target="_blank" rel="noopener" onclick="trackEvent('click','seo_transporte-de-cargas-buenos-aires','hero_whatsapp')">Consultar por WhatsApp</a>
   </div>
 </header>
 
@@ -251,7 +251,21 @@
   <a href="mailto:contacto@plataforma-uno.com">Contacto</a>
 </footer>
 
-<a class="wa-float" href="https://wa.me/5493512003851?text=Hola%20UNO%2C%20necesito%20transporte%20de%20cargas%20en%20Buenos%20Aires" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">💬</a>
+<a class="wa-float" href="https://wa.me/5493516528839?text=Hola%20UNO%2C%20necesito%20transporte%20de%20cargas%20en%20Buenos%20Aires" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">💬</a>
 
+<script>
+/* UNO: medición de clics en WhatsApp y Registro (eventos clave GA4 + Meta Pixel si existe) */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var h = a.href || '', ev = null, fb = null;
+  if (/wa\.me|api\.whatsapp\.com/.test(h)) { ev = 'click_whatsapp'; fb = 'Contact'; }
+  else if (/app\.plataforma-uno\.com\/register/.test(h)) { ev = 'click_registro'; fb = 'Lead'; }
+  if (!ev) return;
+  var p = { link_url: h, pagina: location.pathname, ubicacion: (a.getAttribute('aria-label') || a.textContent || '').trim().slice(0, 50), transport_type: 'beacon' };
+  if (window.gtag) gtag('event', ev, p);
+  if (window.fbq) fbq('track', fb);
+}, true);
+</script>
 </body>
 </html>

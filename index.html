@@ -80,17 +80,12 @@
     gtag('config', 'G-15PH44P2XY', { send_page_view: true });
 
     // GA4 — eventos de conversión
-    // En GA4 Admin marcá "generate_lead" y "sign_up" como Eventos clave
+    // Eventos clave en GA4: click_whatsapp, click_registro
     function trackEvent(action, category, label, value) {
       // evento original (retrocompatibilidad)
       gtag('event', action, { event_category: category, event_label: label, value: value });
       // mapeamos a eventos GA4 estándar para conversiones
-      if (label === 'cta_registrarse' || label === 'registrarse') {
-        gtag('event', 'sign_up', { method: category });
-      }
-      if (label === 'cta_whatsapp' || label === 'whatsapp') {
-        gtag('event', 'generate_lead', { method: 'whatsapp', value: 1 });
-      }
+      // Clics a WhatsApp y Registro se miden con el listener global al final de la página (click_whatsapp / click_registro)
     }
   </script>
 
@@ -1189,7 +1184,7 @@
          style="margin-right:14px;">
         Quiero probar UNO gratis →
       </a>
-      <a href="https://wa.me/5493512003851?text=Hola%20UNO%2C%20vi%20el%20video%20y%20quiero%20una%20demo"
+      <a href="https://wa.me/5493516528839?text=Hola%20UNO%2C%20vi%20el%20video%20y%20quiero%20una%20demo"
          class="btn-secondary" target="_blank"
          onclick="trackEvent('click','video_section','cta_whatsapp')">
         📲 Hablar con el equipo
@@ -1513,7 +1508,7 @@
 
 <!-- ══════════════ WHATSAPP FLOTANTE ══════════════ -->
 <a class="wa-float"
-   href="https://wa.me/5493512003851?text=Hola%20UNO%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20plataforma"
+   href="https://wa.me/5493516528839?text=Hola%20UNO%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20plataforma"
    target="_blank" rel="noopener noreferrer"
    aria-label="Contactar por WhatsApp"
    onclick="trackEvent('click','whatsapp','float_button')">
@@ -1666,5 +1661,19 @@
   });
 </script>
 
+<script>
+/* UNO: medición de clics en WhatsApp y Registro (eventos clave GA4 + Meta Pixel si existe) */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var h = a.href || '', ev = null, fb = null;
+  if (/wa\.me|api\.whatsapp\.com/.test(h)) { ev = 'click_whatsapp'; fb = 'Contact'; }
+  else if (/app\.plataforma-uno\.com\/register/.test(h)) { ev = 'click_registro'; fb = 'Lead'; }
+  if (!ev) return;
+  var p = { link_url: h, pagina: location.pathname, ubicacion: (a.getAttribute('aria-label') || a.textContent || '').trim().slice(0, 50), transport_type: 'beacon' };
+  if (window.gtag) gtag('event', ev, p);
+  if (window.fbq) fbq('track', fb);
+}, true);
+</script>
 </body>
 </html>
