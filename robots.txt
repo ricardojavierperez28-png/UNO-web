@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /backup/
+Disallow: /PARA_SUBIR/
 
 Sitemap: https://plataforma-uno.com/sitemap.xml

@@ -90,6 +90,14 @@
   .assump{font-size:11px;color:#666;margin-top:14px;font-style:italic}
   @media(max-width:760px){.panel.active{grid-template-columns:1fr}.inputs{border-right:none;border-bottom:1px solid #242424}}
 </style>
+  <!-- Google Analytics GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-15PH44P2XY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-15PH44P2XY', { send_page_view: true });
+  </script>
 </head>
 <body>
 <div class="wrap">
@@ -329,6 +337,20 @@
   }));
   document.querySelectorAll('input').forEach(i=>i.addEventListener('input',calcAll));
   calcAll();
+</script>
+<script>
+/* UNO: medición de clics en WhatsApp y Registro (eventos clave GA4 + Meta Pixel si existe) */
+document.addEventListener('click', function (e) {
+  var a = e.target.closest && e.target.closest('a[href]');
+  if (!a) return;
+  var h = a.href || '', ev = null, fb = null;
+  if (/wa\.me|api\.whatsapp\.com/.test(h)) { ev = 'click_whatsapp'; fb = 'Contact'; }
+  else if (/app\.plataforma-uno\.com\/register/.test(h)) { ev = 'click_registro'; fb = 'Lead'; }
+  if (!ev) return;
+  var p = { link_url: h, pagina: location.pathname, ubicacion: (a.getAttribute('aria-label') || a.textContent || '').trim().slice(0, 50), transport_type: 'beacon' };
+  if (window.gtag) gtag('event', ev, p);
+  if (window.fbq) fbq('track', fb);
+}, true);
 </script>
 </body>
 </html>
